@@ -1,0 +1,42 @@
+{
+  "btc": {
+    "minFee": 93,
+    "medFee": 130,
+    "maxFee": 200
+  },
+  "bch": {
+    "minFee": 2,
+    "medFee": 3,
+    "maxFee": 4
+  },
+  "dash": {
+    "minFee": 2,
+    "medFee": 3,
+    "maxFee": 4
+  },
+  "dgb": {
+    "minFee": 2,
+    "medFee": 3,
+    "maxFee": 4
+  },
+  "doge": {
+    "minFee": 2500,
+    "medFee": 5000,
+    "maxFee": 10000
+  },
+  "flux": {
+    "minFee": 71,
+    "medFee": 136,
+    "maxFee": 172
+  },
+  "ltc": {
+    "minFee": 5,
+    "medFee": 10,
+    "maxFee": 15
+  },
+  "zec": {
+    "minFee": 2,
+    "medFee": 3,
+    "maxFee": 4
+  }
+}
