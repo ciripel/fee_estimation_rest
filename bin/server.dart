@@ -7,15 +7,15 @@ import 'package:shelf_router/shelf_router.dart';
 // Configure routes.
 final _router = Router()
   ..get('/', _rootHandler)
-  ..get('/utxoCoins', _getFeesHandler);
+  ..get('/utxoCoins', _getUtxoCoinsFeesHandler);
 
 Response _rootHandler(Request req) {
   return Response.ok('Check /utxoCoins for utxoCoins byteFee\n');
 }
 
-Response _getFeesHandler(Request request) {
-  String fees = File('./assets/fees.json').readAsStringSync();
-  return Response.ok(fees);
+Response _getUtxoCoinsFeesHandler(Request request) {
+  String utxoCoinsFees = File('./assets/utxo_coins.json').readAsStringSync();
+  return Response.ok(utxoCoinsFees);
 }
 
 void main(List<String> args) async {

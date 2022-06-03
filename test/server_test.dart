@@ -23,7 +23,14 @@ void main() {
   test('Root', () async {
     final response = await get(Uri.parse('$host/'));
     expect(response.statusCode, 200);
-    expect(response.body, 'Hello, World!\n');
+    expect(response.body, 'Check /utxoCoins for utxoCoins byteFee\n');
+  });
+
+  test('utxoCoins', () async {
+    final response = await get(Uri.parse('$host/utxoCoins'));
+    expect(response.statusCode, 200);
+    String utxoCoinsFees = File('./assets/utxo_coins.json').readAsStringSync();
+    expect(response.body, utxoCoinsFees);
   });
 
   test('404', () async {
