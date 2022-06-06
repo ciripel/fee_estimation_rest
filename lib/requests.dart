@@ -13,51 +13,30 @@ Future<Response> getRequest(String apiEndpoint) async {
 }
 
 class GasPrice {
-  static Future<Map<String, String>> get eth async {
-    final String ethereumFees =
-        File('./assets/ethereum.json').readAsStringSync();
-    String safeGasPrice = jsonDecode(ethereumFees)['eth']['safeGasPrice'];
-    String proposeGasPrice = jsonDecode(ethereumFees)['eth']['proposeGasPrice'];
-    String fastGasPrice = jsonDecode(ethereumFees)['eth']['fastGasPrice'];
+  static Future<Map<String, String>> scan({
+    required String apiEndpoint,
+    required String network,
+    String gaslimit = '21000',
+  }) async {
+    final String fees = File('./assets/ethereum.json').readAsStringSync();
+    String safeGasPrice = jsonDecode(fees)[network]['safeGasPrice'];
+    String proposeGasPrice = jsonDecode(fees)[network]['proposeGasPrice'];
+    String fastGasPrice = jsonDecode(fees)[network]['fastGasPrice'];
 
     final request = await getRequest(
-        'https://api.etherscan.io/api?module=gastracker&action=gasoracle');
+        '${apiEndpoint}api?module=gastracker&action=gasoracle');
     if (jsonDecode(request.body)['status'] != '1') {
       throw Exception(request.body);
     }
     safeGasPrice = jsonDecode(request.body)['result']['SafeGasPrice'];
     proposeGasPrice = jsonDecode(request.body)['result']['ProposeGasPrice'];
     fastGasPrice = jsonDecode(request.body)['result']['FastGasPrice'];
-    final eth = {
+    final prices = {
       'safeGasPrice': '${safeGasPrice}000000000',
       'proposeGasPrice': '${proposeGasPrice}000000000',
       'fastGasPrice': '${fastGasPrice}000000000',
-      'gasLimit': '21000',
+      'gasLimit': gaslimit,
     };
-    return eth;
-  }
-
-  static Future<Map<String, String>> get bsc async {
-    final String ethereumFees =
-        File('./assets/ethereum.json').readAsStringSync();
-    String safeGasPrice = jsonDecode(ethereumFees)['bsc']['safeGasPrice'];
-    String proposeGasPrice = jsonDecode(ethereumFees)['bsc']['proposeGasPrice'];
-    String fastGasPrice = jsonDecode(ethereumFees)['bsc']['fastGasPrice'];
-
-    final request = await getRequest(
-        'https://api.bscscan.com/api?module=gastracker&action=gasoracle');
-    if (jsonDecode(request.body)['status'] != '1') {
-      throw Exception(request.body);
-    }
-    safeGasPrice = jsonDecode(request.body)['result']['SafeGasPrice'];
-    proposeGasPrice = jsonDecode(request.body)['result']['ProposeGasPrice'];
-    fastGasPrice = jsonDecode(request.body)['result']['FastGasPrice'];
-    final bsc = {
-      'safeGasPrice': '${safeGasPrice}000000000',
-      'proposeGasPrice': '${proposeGasPrice}000000000',
-      'fastGasPrice': '${fastGasPrice}000000000',
-      'gasLimit': '21000',
-    };
-    return bsc;
+    return prices;
   }
 }
