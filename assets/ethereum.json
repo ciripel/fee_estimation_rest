@@ -12,9 +12,9 @@
     "gasLimit": "21000"
   },
   "eth": {
-    "safeGasPrice": "30000000000",
+    "safeGasPrice": "29000000000",
     "proposeGasPrice": "30000000000",
-    "fastGasPrice": "31000000000",
+    "fastGasPrice": "32000000000",
     "gasLimit": "21000"
   }
 }

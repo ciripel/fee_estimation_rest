@@ -25,8 +25,16 @@ void main() {
     expect(response.statusCode, 200);
     expect(
         response.body,
+        'Check /cosmos for cosmos chainId and minFee and gas\n'
         'Check /ethereum for ethereum gasPrice and gasLimit\n'
-        'Check /utxoCoins for utxoCoins byteFee\n');
+        'Check /utxoCoins for utxoCoins minByteFee\n');
+  });
+
+  test('Cosmos', () async {
+    final response = await get(Uri.parse('$host/cosmos'));
+    expect(response.statusCode, 200);
+    String cosmosFees = File('./assets/cosmos.json').readAsStringSync();
+    expect(response.body, cosmosFees);
   });
 
   test('Ethereum', () async {

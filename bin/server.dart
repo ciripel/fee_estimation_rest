@@ -10,12 +10,19 @@ import 'package:fee_estimation_rest/requests.dart';
 // Configure routes.
 final _router = Router()
   ..get('/', _rootHandler)
+  ..get('/cosmos', _getCosmosFeesHandler)
   ..get('/ethereum', _getEthereumFeesHandler)
   ..get('/utxoCoins', _getUtxoCoinsFeesHandler);
 
 Response _rootHandler(Request req) {
-  return Response.ok('Check /ethereum for ethereum gasPrice and gasLimit\n'
-      'Check /utxoCoins for utxoCoins byteFee\n');
+  return Response.ok('Check /cosmos for cosmos chainId and minFee and gas\n'
+      'Check /ethereum for ethereum gasPrice and gasLimit\n'
+      'Check /utxoCoins for utxoCoins minByteFee\n');
+}
+
+Response _getCosmosFeesHandler(Request request) {
+  String cosmosFees = File('./assets/cosmos.json').readAsStringSync();
+  return Response.ok(cosmosFees);
 }
 
 Response _getEthereumFeesHandler(Request request) {

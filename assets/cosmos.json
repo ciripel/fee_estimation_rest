@@ -1,0 +1,12 @@
+{
+  "atom": {
+    "chainId": "cosmoshub-4",
+    "minFee": "800",
+    "gas": "80000"
+  },
+  "osmo": {
+    "chainId": "osmosis-1",
+    "minFee": "1000",
+    "gas": "100000"
+  }
+}

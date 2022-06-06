@@ -1,7 +1,7 @@
 name: fee_estimation_rest
-description: A server app using the shelf package and Docker.
-version: 1.0.0
-# homepage: https://www.example.com
+description: A server app to provide required fees for broadcasting in different blockchain networks.
+version: 0.0.1
+homepage: https://fees.amitabha.xyz
 
 environment:
   sdk: ">=2.17.1 <3.0.0"
