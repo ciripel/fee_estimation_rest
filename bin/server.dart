@@ -33,16 +33,14 @@ void main(List<String> args) async {
     try {
       Map<String, dynamic> fees =
           jsonDecode(File('./assets/ethereum.json').readAsStringSync());
-      var ethGP = await GasPrice.scan(
+      fees['eth'] = await GasPrice.scan(
         apiEndpoint: 'https://api.etherscan.io/',
         network: 'eth',
       );
-      fees['eth'] = ethGP;
-      var bscGP = await GasPrice.scan(
+      fees['bsc'] = await GasPrice.scan(
         apiEndpoint: 'https://api.bscscan.com/',
         network: 'bsc',
       );
-      fees['bsc'] = bscGP;
       await File('./assets/ethereum.json')
           .writeAsString(JsonEncoder.withIndent('  ').convert(fees));
     } catch (error) {
