@@ -23,7 +23,17 @@ void main() {
   test('Root', () async {
     final response = await get(Uri.parse('$host/'));
     expect(response.statusCode, 200);
-    expect(response.body, 'Check /utxoCoins for utxoCoins byteFee\n');
+    expect(
+        response.body,
+        'Check /ethereum for ethereum gasPrice and gasLimit\n'
+        'Check /utxoCoins for utxoCoins byteFee\n');
+  });
+
+  test('Ethereum', () async {
+    final response = await get(Uri.parse('$host/ethereum'));
+    expect(response.statusCode, 200);
+    String ethereumFees = File('./assets/ethereum.json').readAsStringSync();
+    expect(response.body, ethereumFees);
   });
 
   test('utxoCoins', () async {

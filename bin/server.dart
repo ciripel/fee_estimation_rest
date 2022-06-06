@@ -1,16 +1,26 @@
+import 'dart:async';
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:shelf/shelf.dart';
 import 'package:shelf/shelf_io.dart';
 import 'package:shelf_router/shelf_router.dart';
+import 'package:fee_estimation_rest/requests.dart';
 
 // Configure routes.
 final _router = Router()
   ..get('/', _rootHandler)
+  ..get('/ethereum', _getEthereumFeesHandler)
   ..get('/utxoCoins', _getUtxoCoinsFeesHandler);
 
 Response _rootHandler(Request req) {
-  return Response.ok('Check /utxoCoins for utxoCoins byteFee\n');
+  return Response.ok('Check /ethereum for ethereum gasPrice and gasLimit\n'
+      'Check /utxoCoins for utxoCoins byteFee\n');
+}
+
+Response _getEthereumFeesHandler(Request request) {
+  String ethereumFees = File('./assets/ethereum.json').readAsStringSync();
+  return Response.ok(ethereumFees);
 }
 
 Response _getUtxoCoinsFeesHandler(Request request) {
@@ -19,6 +29,20 @@ Response _getUtxoCoinsFeesHandler(Request request) {
 }
 
 void main(List<String> args) async {
+  Timer.periodic(Duration(minutes: 5), (timer) async {
+    try {
+      Map<String, dynamic> ethereumFees =
+          jsonDecode(File('./assets/ethereum.json').readAsStringSync());
+      Map<String, String> ethGP = await GasPrice.eth;
+      ethereumFees['eth'] = ethGP;
+      Map<String, String> bscGP = await GasPrice.bsc;
+      ethereumFees['bsc'] = bscGP;
+      await File('./assets/ethereum.json')
+          .writeAsString(JsonEncoder.withIndent('  ').convert(ethereumFees));
+    } catch (error) {
+      print(error);
+    }
+  });
   // Use any available host or container IP (usually `0.0.0.0`).
   final ip = InternetAddress.anyIPv4;
 

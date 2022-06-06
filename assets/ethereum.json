@@ -1,0 +1,20 @@
+{
+  "bsc": {
+    "safeGasPrice": "5000000000",
+    "proposeGasPrice": "5000000000",
+    "fastGasPrice": "5000000000",
+    "gasLimit": "21000"
+  },
+  "etc": {
+    "safeGasPrice": "5000000000",
+    "proposeGasPrice": "5000000000",
+    "fastGasPrice": "5000000000",
+    "gasLimit": "21000"
+  },
+  "eth": {
+    "safeGasPrice": "30000000000",
+    "proposeGasPrice": "30000000000",
+    "fastGasPrice": "31000000000",
+    "gasLimit": "21000"
+  }
+}
