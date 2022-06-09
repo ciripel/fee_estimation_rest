@@ -12,11 +12,13 @@ final _router = Router()
   ..get('/', _rootHandler)
   ..get('/cosmos', _getCosmosFeesHandler)
   ..get('/ethereum', _getEthereumFeesHandler)
+  ..get('/solana', _getSolanaFeesHandler)
   ..get('/utxoCoins', _getUtxoCoinsFeesHandler);
 
 Response _rootHandler(Request req) {
   return Response.ok('Check /cosmos for cosmos chainId and minFee and gas\n'
       'Check /ethereum for ethereum gasPrice and gasLimit\n'
+      'Check /solana for solana fee\n'
       'Check /utxoCoins for utxoCoins minByteFee\n');
 }
 
@@ -28,6 +30,11 @@ Response _getCosmosFeesHandler(Request request) {
 Response _getEthereumFeesHandler(Request request) {
   String ethereumFees = File('./assets/ethereum.json').readAsStringSync();
   return Response.ok(ethereumFees);
+}
+
+Response _getSolanaFeesHandler(Request request) {
+  String solanaFees = File('./assets/solana.json').readAsStringSync();
+  return Response.ok(solanaFees);
 }
 
 Response _getUtxoCoinsFeesHandler(Request request) {

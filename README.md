@@ -1,7 +1,7 @@
 A server app built using [Shelf](https://pub.dev/packages/shelf),
 configured to enable running with [Docker](https://www.docker.com/).
 
-This code handles HTTP GET requests to `/`, `/cosmos`, `/ethereum` and `/utxoCoins`.
+This code handles HTTP GET requests to `/`, `/cosmos`, `/ethereum`, `/solana` and `/utxoCoins`.
 
 # Running the sample
 
