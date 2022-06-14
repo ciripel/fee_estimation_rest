@@ -1,26 +1,26 @@
 {
   "btc": {
-    "minFee": 93
+    "minFee": "93"
   },
   "bch": {
-    "minFee": 2
+    "minFee": "2"
   },
   "dash": {
-    "minFee": 2
+    "minFee": "2"
   },
   "dgb": {
-    "minFee": 2
+    "minFee": "2"
   },
   "doge": {
-    "minFee": 2500
+    "minFee": "2500"
   },
   "flux": {
-    "minFee": 71
+    "minFee": "71"
   },
   "ltc": {
-    "minFee": 5
+    "minFee": "5"
   },
   "zec": {
-    "minFee": 2
+    "minFee": "2"
   }
 }
