@@ -27,6 +27,7 @@ void main() {
         response.body,
         'Check /cosmos for cosmos chainId and minFee and gas\n'
         'Check /ethereum for ethereum gasPrice and gasLimit\n'
+        'Check /solana for solana fee\n'
         'Check /utxoCoins for utxoCoins minByteFee\n');
   });
 
