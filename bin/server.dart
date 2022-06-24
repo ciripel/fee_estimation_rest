@@ -43,17 +43,21 @@ Response _getUtxoCoinsFeesHandler(Request request) {
 }
 
 void main(List<String> args) async {
-  Timer.periodic(Duration(minutes: 5), (timer) async {
+  Timer.periodic(Duration(seconds: 7), (timer) async {
     try {
       Map<String, dynamic> fees =
           jsonDecode(File('./assets/ethereum.json').readAsStringSync());
-      fees['eth'] = await GasPrice.scan(
+      fees['bsc'] = await GasPrice.scanLegacy(
+        apiEndpoint: 'https://api.bscscan.com/',
+        network: 'bsc',
+      );
+      fees['eth'] = await GasPrice.scanEIP1559(
         apiEndpoint: 'https://api.etherscan.io/',
         network: 'eth',
       );
-      fees['bsc'] = await GasPrice.scan(
-        apiEndpoint: 'https://api.bscscan.com/',
-        network: 'bsc',
+      fees['matic'] = await GasPrice.scanEIP1559(
+        apiEndpoint: 'https://api.polygonscan.com/',
+        network: 'matic',
       );
       await File('./assets/ethereum.json')
           .writeAsString(JsonEncoder.withIndent('  ').convert(fees));

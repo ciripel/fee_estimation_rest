@@ -12,9 +12,21 @@
     "gasLimit": "21000"
   },
   "eth": {
-    "safeGasPrice": "29000000000",
-    "proposeGasPrice": "30000000000",
-    "fastGasPrice": "32000000000",
+    "safeMaxInclusionFeePerGas": "929374821",
+    "proposeMaxInclusionFeePerGas": "929374821",
+    "fastMaxInclusionFeePerGas": "929374821",
+    "safeMaxFeePerGas": "52000000000",
+    "proposeMaxFeePerGas": "52000000000",
+    "fastMaxFeePerGas": "52000000000",
+    "gasLimit": "21000"
+  },
+  "matic": {
+    "safeMaxInclusionFeePerGas": "39799847388",
+    "proposeMaxInclusionFeePerGas": "80999847388",
+    "fastMaxInclusionFeePerGas": "124599847388",
+    "safeMaxFeePerGas": "88200000000",
+    "proposeMaxFeePerGas": "129400000000",
+    "fastMaxFeePerGas": "173000000000",
     "gasLimit": "21000"
   }
 }
