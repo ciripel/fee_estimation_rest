@@ -43,21 +43,25 @@ Response _getUtxoCoinsFeesHandler(Request request) {
 }
 
 void main(List<String> args) async {
-  Timer.periodic(Duration(seconds: 7), (timer) async {
+  Timer.periodic(Duration(minutes: 5), (timer) async {
     try {
       Map<String, dynamic> fees =
           jsonDecode(File('./assets/ethereum.json').readAsStringSync());
-      fees['bsc'] = await GasPrice.scanLegacy(
-        apiEndpoint: 'https://api.bscscan.com/',
+      fees['bsc'] = await GasPrice.owlracleLegacy(
+        apiEndpoint: 'https://owlracle.info/',
         network: 'bsc',
       );
-      fees['eth'] = await GasPrice.scanEIP1559(
-        apiEndpoint: 'https://api.etherscan.io/',
+      fees['eth'] = await GasPrice.owlracleEIP1559(
+        apiEndpoint: 'https://owlracle.info/',
         network: 'eth',
       );
-      fees['matic'] = await GasPrice.scanEIP1559(
-        apiEndpoint: 'https://api.polygonscan.com/',
+      fees['matic'] = await GasPrice.owlracleEIP1559(
+        apiEndpoint: 'https://owlracle.info/',
         network: 'matic',
+      );
+      fees['avax'] = await GasPrice.owlracleEIP1559(
+        apiEndpoint: 'https://owlracle.info/',
+        network: 'avax',
       );
       await File('./assets/ethereum.json')
           .writeAsString(JsonEncoder.withIndent('  ').convert(fees));

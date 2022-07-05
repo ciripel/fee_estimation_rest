@@ -1,9 +1,18 @@
 {
+  "avax": {
+    "safeMaxInclusionFeePerGas": "1496476661",
+    "proposeMaxInclusionFeePerGas": "2906476661",
+    "fastMaxInclusionFeePerGas": "29996476661",
+    "safeMaxFeePerGas": "26500000000",
+    "proposeMaxFeePerGas": "27910000000",
+    "fastMaxFeePerGas": "55000000000",
+    "gasLimit": "243288"
+  },
   "bsc": {
     "safeGasPrice": "5000000000",
     "proposeGasPrice": "5000000000",
-    "fastGasPrice": "5000000000",
-    "gasLimit": "21000"
+    "fastGasPrice": "5355000000",
+    "gasLimit": "150820"
   },
   "etc": {
     "safeGasPrice": "5000000000",
@@ -12,21 +21,21 @@
     "gasLimit": "21000"
   },
   "eth": {
-    "safeMaxInclusionFeePerGas": "929374821",
-    "proposeMaxInclusionFeePerGas": "929374821",
-    "fastMaxInclusionFeePerGas": "929374821",
-    "safeMaxFeePerGas": "52000000000",
-    "proposeMaxFeePerGas": "52000000000",
-    "fastMaxFeePerGas": "52000000000",
-    "gasLimit": "21000"
+    "safeMaxInclusionFeePerGas": "2496798061",
+    "proposeMaxInclusionFeePerGas": "6859296309",
+    "fastMaxInclusionFeePerGas": "12554038345",
+    "safeMaxFeePerGas": "19264937136",
+    "proposeMaxFeePerGas": "23627435384",
+    "fastMaxFeePerGas": "29322177420",
+    "gasLimit": "93465"
   },
   "matic": {
-    "safeMaxInclusionFeePerGas": "39799847388",
-    "proposeMaxInclusionFeePerGas": "80999847388",
-    "fastMaxInclusionFeePerGas": "124599847388",
-    "safeMaxFeePerGas": "88200000000",
-    "proposeMaxFeePerGas": "129400000000",
-    "fastMaxFeePerGas": "173000000000",
-    "gasLimit": "21000"
+    "safeMaxInclusionFeePerGas": "5869453339",
+    "proposeMaxInclusionFeePerGas": "102501933765",
+    "fastMaxInclusionFeePerGas": "179918656472",
+    "safeMaxFeePerGas": "41000000000",
+    "proposeMaxFeePerGas": "137632480426",
+    "fastMaxFeePerGas": "215049203133",
+    "gasLimit": "190040"
   }
 }
